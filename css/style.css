@@ -95,6 +95,9 @@ main {
 .bg-change {
     background-color: lightblue;
 }
+.bg-change-error {
+    background-color: red;
+}
 
 /* ------------------
     FOOTER

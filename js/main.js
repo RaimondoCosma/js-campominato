@@ -8,6 +8,17 @@ function boxCreation (howManyColumn) {
     boxContainer.innerHTML = "";
     // Dichiaro variabile che generi i box totaliin base alle colonne
     let howManyBox = howManyColumn * howManyColumn;
+    // Array contenente le bombe
+    let bombNumbers = [];
+    let i = 0;
+    while ( i < 16 ) {
+        let random = Math.floor(Math.random() * howManyBox) + 1;
+        if (!bombNumbers.includes(random)){
+            bombNumbers.push(random);
+            i++;
+        }
+    }
+    console.log(bombNumbers);
      // Inizializzo un ciclo for per creare i miei box dinamicamente dentro il box__container
      for ( let i = 1; i <= howManyBox; i++ ){
          let boxItem = document.createElement("div");
@@ -16,8 +27,12 @@ function boxCreation (howManyColumn) {
          boxContainer.append(boxItem);
          // Aggiungo evento click al box della cella
          boxItem.addEventListener("click", function(){
-             this.classList.toggle("bg-change");
-             console.log(`Hai cliccato la casella numero: ${this.innerHTML}`);
+            if ( bombNumbers.includes(Number(boxItem.innerHTML)) ) {
+                this.classList.add("bg-change-error");
+            } else {
+                this.classList.toggle("bg-change");
+            }
+            console.log(`Hai cliccato la casella numero: ${this.innerHTML}`);
          })
      }
 }
@@ -39,13 +54,13 @@ play.addEventListener('click', function(){
     boxCreation(difficulties);
 })
 
-let bombNumbers = [];
-let i = 0;
-while ( i < 16 ) {
-    let random = Math.floor(Math.random() * 100) + 1;
-    if (!bombNumbers.includes(random)){
-        bombNumbers.push(random);
-        i++;
-    }
-}
-console.log(bombNumbers);
+// let bombNumbers = [];
+// let i = 0;
+// while ( i < 16 ) {
+//     let random = Math.floor(Math.random() * 100) + 1;
+//     if (!bombNumbers.includes(random)){
+//         bombNumbers.push(random);
+//         i++;
+//     }
+// }
+// console.log(bombNumbers);
