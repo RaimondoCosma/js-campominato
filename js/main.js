@@ -31,15 +31,20 @@ function boxCreation (howManyColumn) {
         boxItem.classList.add('box__item',`box__item${howManyColumn}`);
         boxContainer.append(boxItem);
         // Aggiungo evento click al box della cella
-        boxItem.addEventListener("click", gameplay);
-        function gameplay(){
+        boxItem.addEventListener("click", function abc(e){
             let boxBomb = bombNumbers.includes(Number(boxItem.innerHTML));
+            const reset = document.getElementById('reset');
+            reset.addEventListener('click', function(){
+                window.location.reload();
+            });
             const advice = document.querySelector('#advice');
             if ( boxBomb ){
                 boxItem.classList.add("bg-change-error");                
                 loseBanner.classList.add('show');
-                // Provo a togliere l'evento click
-                boxItem.removeEventListener("click", gameplay);
+                boxItem.removeEventListener('click', abc);
+                advice.innerHTML = `<span style="font-size:24px; color:red;">Gioco finito, premi il tasto reset se vuoi ricominciare.</span>`;
+                reset.classList.add('show');
+                return;
             } else {
                 if ( !this.classList.contains("bg-change") ){
                     this.classList.add("bg-change");
@@ -52,10 +57,11 @@ function boxCreation (howManyColumn) {
                 }
                 totalWinScore.innerHTML = `<span style="font-size: 30px; color: red; font-weight: bold">${score} su ${score}</score>`;
                 totalScore.innerHTML = `<span style="font-size: 30px; color: red; font-weight: bold">${score}</score>`;
+                advice.innerHTML = `<span style="font-size:24px; color:red;">Gioco finito, premi il tasto reset se vuoi ricominciare.</span>`;
             }
-            advice.innerHTML = `Il tuo punteggio attuale è di: ${score} punti`;
+            advice.innerHTML = `<span style="font-size:24px;">Il tuo punteggio attuale è di: ${score} punti</span>`;
             console.log(`Hai cliccato la casella numero: ${this.innerHTML}`);
-        }
+        })
     }
 }
 /*-----------------------

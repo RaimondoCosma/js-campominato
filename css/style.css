@@ -76,6 +76,18 @@ main {
     bottom: .625rem;
     left: 50%;
     transform: translate(-50%);
+    font-size: 22px;
+}
+#reset {
+    position: absolute;
+    top: .625rem;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 1.25rem;
+    padding: .1875rem 1.25rem;
+    background-color: yellowgreen;
+    opacity: 0;
+    transition: 0.4s ease-in;
 }
 #win-banner {
     position: absolute;
