@@ -38,8 +38,12 @@ function boxCreation (howManyColumn) {
                 boxItem.classList.add("bg-change-error");                
                 loseBanner.classList.add('show');
             } else {
-                this.classList.add("bg-change");
-                score++;
+                if ( !this.classList.contains("bg-change") ){
+                    this.classList.add("bg-change");
+                    score++;
+                } else {
+                    score = score;
+                }
                 if ( score === howManyBox - 16 ){
                     winBanner.classList.add('show');
                 }
