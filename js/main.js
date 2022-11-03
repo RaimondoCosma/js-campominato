@@ -31,12 +31,15 @@ function boxCreation (howManyColumn) {
         boxItem.classList.add('box__item',`box__item${howManyColumn}`);
         boxContainer.append(boxItem);
         // Aggiungo evento click al box della cella
-        boxItem.addEventListener("click", function(){
+        boxItem.addEventListener("click", gameplay);
+        function gameplay(){
             let boxBomb = bombNumbers.includes(Number(boxItem.innerHTML));
             const advice = document.querySelector('#advice');
             if ( boxBomb ){
                 boxItem.classList.add("bg-change-error");                
                 loseBanner.classList.add('show');
+                // Provo a togliere l'evento click
+                boxItem.removeEventListener("click", gameplay);
             } else {
                 if ( !this.classList.contains("bg-change") ){
                     this.classList.add("bg-change");
@@ -52,7 +55,7 @@ function boxCreation (howManyColumn) {
             }
             advice.innerHTML = `Il tuo punteggio attuale è di: ${score} punti`;
             console.log(`Hai cliccato la casella numero: ${this.innerHTML}`);
-        })
+        }
     }
 }
 /*-----------------------
