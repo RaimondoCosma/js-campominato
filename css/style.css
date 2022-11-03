@@ -28,7 +28,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding-right: 1.5625rem;
-    height: 7.5rem;
+    height: 5.625rem;
 }
 .logo {
     display: flex;
@@ -36,7 +36,7 @@ header {
 }
 .logo-title {
     font-size: 2.625rem;
-    line-height: 7.5rem;
+    line-height: 5.625rem;
 }
 .btn-choose {
     display: flex;
@@ -54,6 +54,7 @@ header {
     MAIN
 ------------------ */
 main {
+    position: relative;
     flex-grow: 1;
     background-color: #7fffd4;
     display: flex;
@@ -62,12 +63,18 @@ main {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    width: 65vh;
-    height: 65vh;
+    width: 60vh;
+    height: 60vh;
     border: 1px solid black;
     margin: auto;
     opacity: 0;
     transition: opacity 0.5s ease-in;
+}
+#advice {
+    position: absolute;
+    bottom: .625rem;
+    left: 50%;
+    transform: translate(-50%);
 }
 .show {
     opacity: 1 !important;

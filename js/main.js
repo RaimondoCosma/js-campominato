@@ -11,6 +11,7 @@ function boxCreation (howManyColumn) {
     // Array contenente le bombe
     let bombNumbers = [];
     let i = 0;
+    let score = 0;
     while ( i < 16 ) {
         let random = Math.floor(Math.random() * howManyBox) + 1;
         if (!bombNumbers.includes(random)){
@@ -19,22 +20,25 @@ function boxCreation (howManyColumn) {
         }
     }
     console.log(bombNumbers);
-     // Inizializzo un ciclo for per creare i miei box dinamicamente dentro il box__container
-     for ( let i = 1; i <= howManyBox; i++ ){
-         let boxItem = document.createElement("div");
-         boxItem.innerHTML = i;
-         boxItem.classList.add('box__item',`box__item${howManyColumn}`);
-         boxContainer.append(boxItem);
-         // Aggiungo evento click al box della cella
-         boxItem.addEventListener("click", function(){
+    // Inizializzo un ciclo for per creare i miei box dinamicamente dentro il box__container
+    for ( let i = 1; i <= howManyBox; i++ ){
+        let boxItem = document.createElement("div");
+        boxItem.innerHTML = i;
+        boxItem.classList.add('box__item',`box__item${howManyColumn}`);
+        boxContainer.append(boxItem);
+        // Aggiungo evento click al box della cella
+        boxItem.addEventListener("click", function(){
+            const advice = document.querySelector('#advice');
             if ( bombNumbers.includes(Number(boxItem.innerHTML)) ) {
                 this.classList.add("bg-change-error");
             } else {
-                this.classList.toggle("bg-change");
+                this.classList.add("bg-change");
+                score++
             }
+            advice.innerHTML = `Il tuo punteggio attuale è di: ${score} punti`;
             console.log(`Hai cliccato la casella numero: ${this.innerHTML}`);
-         })
-     }
+        })
+    }
 }
 /*-----------------------
     MAIN
@@ -53,14 +57,3 @@ play.addEventListener('click', function(){
     // Impostando valore di howManyColumn = difficulties, posso richiamare direttamente difficulties dentro la funzione
     boxCreation(difficulties);
 })
-
-// let bombNumbers = [];
-// let i = 0;
-// while ( i < 16 ) {
-//     let random = Math.floor(Math.random() * 100) + 1;
-//     if (!bombNumbers.includes(random)){
-//         bombNumbers.push(random);
-//         i++;
-//     }
-// }
-// console.log(bombNumbers);
