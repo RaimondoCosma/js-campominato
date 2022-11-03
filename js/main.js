@@ -38,3 +38,14 @@ play.addEventListener('click', function(){
     // Impostando valore di howManyColumn = difficulties, posso richiamare direttamente difficulties dentro la funzione
     boxCreation(difficulties);
 })
+
+let bombNumbers = [];
+let i = 0;
+while ( i < 16 ) {
+    let random = Math.floor(Math.random() * 100) + 1;
+    if (!bombNumbers.includes(random)){
+        bombNumbers.push(random);
+        i++;
+    }
+}
+console.log(bombNumbers);
