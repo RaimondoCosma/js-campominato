@@ -88,7 +88,7 @@ main {
     height: 130px;
     top: 50%;
     transform: translateY(-50%);
-    right: 20%;
+    right: 15%;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
     opacity: 0;
     transition: 0.4s ease-in;
