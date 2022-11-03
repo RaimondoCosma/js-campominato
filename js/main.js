@@ -12,6 +12,10 @@ function boxCreation (howManyColumn) {
     let bombNumbers = [];
     let i = 0;
     let score = 0;
+    const winBanner = document.getElementById('win-banner');
+    const loseBanner = document.getElementById('lose-banner');
+    const totalWinScore = document.getElementById('total-win-score');
+    const totalScore = document.getElementById('total-score');
     while ( i < 16 ) {
         let random = Math.floor(Math.random() * howManyBox) + 1;
         if (!bombNumbers.includes(random)){
@@ -30,10 +34,17 @@ function boxCreation (howManyColumn) {
         boxItem.addEventListener("click", function(){
             const advice = document.querySelector('#advice');
             if ( bombNumbers.includes(Number(boxItem.innerHTML)) ) {
-                this.classList.add("bg-change-error");
+                boxItem.classList.add("bg-change-error");                
+                loseBanner.classList.add('show');
+                boxItem.removeEventListener("click", function(){}, true);
             } else {
                 this.classList.add("bg-change");
                 score++
+                if ( score === howManyBox - 16 ){
+                    winBanner.classList.add('show');
+                }
+                totalWinScore.innerHTML = `<span style="font-size: 30px; color: red; font-weight: bold">${score} su ${score}</score>`;
+                totalScore.innerHTML = `<span style="font-size: 30px; color: red; font-weight: bold">${score}</score>`;
             }
             advice.innerHTML = `Il tuo punteggio attuale è di: ${score} punti`;
             console.log(`Hai cliccato la casella numero: ${this.innerHTML}`);
