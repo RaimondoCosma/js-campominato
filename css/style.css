@@ -69,6 +69,7 @@ main {
     margin: auto;
     opacity: 0;
     transition: opacity 0.5s ease-in;
+    box-shadow: 12px 12px 2px 1px rgba(11, 69, 13, 0.2);
 }
 #advice {
     position: absolute;
@@ -116,8 +117,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    background-color: lightgreen;
     border: 1px solid black;
     cursor: pointer;
+}
+.box__item:active {
+    transform: scale(0.90);
 }
 .box__item10 {
     width: calc(100% / 10);
@@ -132,10 +138,12 @@ main {
     height: calc(100% / 7);
 }
 .bg-change {
-    background-color: lightblue;
+    background-color: blue;
+    color: white;
 }
 .bg-change-error {
     background-color: red;
+    color: white;
 }
 
 /* ------------------

@@ -32,14 +32,14 @@ function boxCreation (howManyColumn) {
         boxContainer.append(boxItem);
         // Aggiungo evento click al box della cella
         boxItem.addEventListener("click", function(){
+            let boxBomb = bombNumbers.includes(Number(boxItem.innerHTML));
             const advice = document.querySelector('#advice');
-            if ( bombNumbers.includes(Number(boxItem.innerHTML)) ) {
+            if ( boxBomb ){
                 boxItem.classList.add("bg-change-error");                
                 loseBanner.classList.add('show');
-                boxItem.removeEventListener("click", function(){}, true);
             } else {
                 this.classList.add("bg-change");
-                score++
+                score++;
                 if ( score === howManyBox - 16 ){
                     winBanner.classList.add('show');
                 }
