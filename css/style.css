@@ -96,8 +96,8 @@ main {
     color: white;
     padding: .625rem;
     background-color: green;
-    width: 250px;
-    height: 130px;
+    width: 15.625rem;
+    height: 9.375rem;
     top: 50%;
     transform: translateY(-50%);
     right: 15%;
